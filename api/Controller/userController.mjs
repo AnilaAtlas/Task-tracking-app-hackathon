@@ -8,11 +8,11 @@ import jwt from "jsonwebtoken";
 const userLogin = async (req, res) => {
   try {
     console.log("Request body:", req.body);
-    const { email, login_password } = req.body;
+    const { email, password } = req.body;
     const user = await User.findOne({ email });
     console.log(user,"db user")
     if (user) {
-      const checkPassword = bcrypt.compareSync(login_password, user.password);
+      const checkPassword = bcrypt.compareSync(password, user.password);
       console.log(checkPassword,"checkPassowrd")
       if (checkPassword) {
         console.log(process.env.JWT_SECRET_KEY)

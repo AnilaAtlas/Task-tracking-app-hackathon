@@ -2,7 +2,7 @@ import Task from'../models/task.mjs';
 
 const getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find().populate('assignedTo', 'username');
+    const tasks = await Task.find().populate('assignedTo', 'name');
 
     if(tasks){
       res.status(200).json({ message: "Task Assigned Successfully", tasks });
@@ -17,14 +17,15 @@ const getTasks = async (req, res) => {
 const createTask = async (req, res) => {
   try {
     const { title, description, assignedTo } = req.body;
-    const task = await Task.create({ title, description, assignedTo });
-    res.status(201).json(task);
+    const task = await Task.create({ title, description, assignedTo});
+
     if(task){
       res.status(200).json({ message: "Task created successfully!", task });
     }else{
       res.status(404).json({ error: "Task not created", status: 404 });
     }
   } catch (err) {
+    console.log(err)
     res.status(500).json({ error: err.message, status:500});
   }
 };
@@ -37,7 +38,6 @@ const updateTask = async (req, res) => {
       { title, description, assignedTo, status },
       { new: true }
     );
-    res.json(task);
     if(task){
       res.status(200).json({ message: "Task updated successfully!", task });
     }else{
