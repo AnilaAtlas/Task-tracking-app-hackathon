@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import TaskBoard from "./pages/TaskBoard";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import TaskBoard from "./Pages/TaskBoard";
 import { AuthProvider, AuthContext } from "./contexts/AuthContext";
 import { TaskProvider } from "./contexts/TaskContext";
 import { UserProvider } from "./contexts/UserContext";

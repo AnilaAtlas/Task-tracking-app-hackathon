@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import TaskCard from "../components/TaskCard";
+import TaskCard from "../Components/TaskCard";
 import { BACKEND_URL } from "../config";
 
 const statuses = ["To Do", "In Progress", "Done"];
